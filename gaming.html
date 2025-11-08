@@ -67,9 +67,9 @@
 </div>
 
 <script type="text/javascript">
-var threads = [
-    "Just beat Dungeon Delvers III without using any healing potions AMA",
-    "Best build for a combat mage in Realms of Ruin?",
+var threadData = [
+    { title: "Just beat Dungeon Delvers III without using any healing potions AMA", link: "dungeon-delvers-no-potions.html" },
+    { title: "Best build for a combat mage in Realms of Ruin?", link: "#" },
     "Divination magic is overpowered in PvP",
     "Why is the final boss of Crystal Quest so hard?",
     "Spellarm Simulator 2005 is the best in the series",
@@ -98,7 +98,7 @@ var threads = [
     "What's your unpopular gaming opinion?",
     "Just finished Spellarm Simulator and I'm crying",
     "Why do NPCs always block doorways?"
-];
+].map(function(title) { return { title: title, link: "#" }; });
 
 var usernames = [
     "HardcoreGamer92", "CasualPlayer", "ProGamer_Elite", "MageMain",
@@ -115,7 +115,7 @@ function generateThreads() {
     var container = document.getElementById('thread-container');
     container.innerHTML = '';
     
-    var shuffled = threads.sort(function() { return 0.5 - Math.random(); });
+    var shuffled = threadData.sort(function() { return 0.5 - Math.random(); });
     
     for (var i = 0; i < 15; i++) {
         var score = scores[Math.floor(Math.random() * scores.length)];
@@ -132,7 +132,7 @@ function generateThreads() {
                 '<div class="downvote">▼</div>' +
             '</div>' +
             '<div class="thread-content">' +
-                '<h3><a href="#">' + shuffled[i] + '</a></h3>' +
+                '<h3><a href="' + shuffled[i].link + '">' + shuffled[i].title + '</a></h3>' +
                 '<p class="meta">posted by <strong>' + username + '</strong> in <a href="gaming.html">/gaming/</a> • ' + time + ' • ' + commentCount + ' comments</p>' +
             '</div>';
         

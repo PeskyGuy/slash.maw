@@ -7,7 +7,7 @@
 <script type="text/javascript">
 // Random thread generator
 var threadTitles = [
-    "What's the weirdest thing you've seen in the Undercity?",
+    { title: "What's the weirdest thing you've seen in the Undercity?", link: "undercity-weird.html" },
     "Rate my spellarm collection",
     "Just moved to Vyrodin, what should I know?",
     "Why is rent in Holy District so expensive?",
@@ -47,7 +47,7 @@ var threadTitles = [
     "Best pizza in Vyrodin?",
     "I think the M.A.W. is reading my thoughts",
     "What's your unpopular Vyrodin opinion?"
-];
+].map(function(title) { return typeof title === 'string' ? { title: title, link: "#" } : title; });
 
 var usernames = [
     "UndercityExplorer", "ManaAddict", "FreeDweller_23", "HolyDistrictElite", 
@@ -84,7 +84,7 @@ function generateThreads() {
                 '<div class="downvote">▼</div>' +
             '</div>' +
             '<div class="thread-content">' +
-                '<h3><a href="#">' + shuffledTitles[i] + '</a></h3>' +
+                '<h3><a href="' + shuffledTitles[i].link + '">' + shuffledTitles[i].title + '</a></h3>' +
                 '<p class="meta">posted by <strong>' + username + '</strong> in <a href="random.html">/random/</a> • ' + time + ' • ' + commentCount + ' comments</p>' +
             '</div>';
         

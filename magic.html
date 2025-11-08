@@ -68,11 +68,11 @@
 </div>
 
 <script type="text/javascript">
-var threads = [
-    "Why is evocation magic so much harder than transmutation?",
-    "Mana exhaustion is no joke - my hospital story",
-    "Transmutation spell went wrong, help!",
-    "I accidentally summoned something and now it won't leave",
+var threadData = [
+    { title: "Why is evocation magic so much harder than transmutation?", link: "#" },
+    { title: "Mana exhaustion is no joke - my hospital story", link: "#" },
+    { title: "Transmutation spell went wrong, help!", link: "#" },
+    { title: "I accidentally summoned something and now it won't leave", link: "summoned-something.html" },
     "What's your mana pool size? (be honest)",
     "Best way to increase mana capacity?",
     "Divination magic ethics discussion",
@@ -88,7 +88,7 @@ var threads = [
     "Practical magic vs traditional magic debate",
     "My roommate keeps practicing evocation at 3 AM",
     "Best meditation techniques for mana regeneration?",
-    "I accidentally turned my cat into a chair",
+    { title: "I accidentally turned my cat into a chair", link: "cat-chair.html" },
     "Healing magic should be free change my mind",
     "What spell impressed you the most?",
     "Mana sensitivity test results - am I screwed?",
@@ -99,7 +99,7 @@ var threads = [
     "Archmage Minoph's teachings are still relevant today",
     "Why is healing magic so expensive to learn?",
     "My mana pool suddenly increased overnight - normal?"
-];
+].map(function(title) { return { title: title, link: "#" }; });
 
 var usernames = [
     "ApprenticeWizard", "BurnedOutMage", "ManaAddict", "SpellTheory_Nerd",
@@ -116,7 +116,7 @@ function generateThreads() {
     var container = document.getElementById('thread-container');
     container.innerHTML = '';
     
-    var shuffled = threads.sort(function() { return 0.5 - Math.random(); });
+    var shuffled = threadData.sort(function() { return 0.5 - Math.random(); });
     
     for (var i = 0; i < 15; i++) {
         var score = scores[Math.floor(Math.random() * scores.length)];
@@ -133,7 +133,7 @@ function generateThreads() {
                 '<div class="downvote">▼</div>' +
             '</div>' +
             '<div class="thread-content">' +
-                '<h3><a href="#">' + shuffled[i] + '</a></h3>' +
+                '<h3><a href="' + shuffled[i].link + '">' + shuffled[i].title + '</a></h3>' +
                 '<p class="meta">posted by <strong>' + username + '</strong> in <a href="magic.html">/magic/</a> • ' + time + ' • ' + commentCount + ' comments</p>' +
             '</div>';
         

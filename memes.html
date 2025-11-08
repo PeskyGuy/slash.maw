@@ -67,8 +67,8 @@
 </div>
 
 <script type="text/javascript">
-var threads = [
-    "[IMAGE] When you accidentally cast fireball in your apartment",
+var threadData = [
+    { title: "[IMAGE] When you accidentally cast fireball in your apartment", link: "fireball-apartment.html" },
     "POV: You're from Free District trying to visit Holy District",
     "[MEME] When your mana battery dies mid-combat",
     "[MEME] Magus vs Tekk arguments in 2005",
@@ -98,7 +98,7 @@ var threads = [
     "POV: You just summoned something by accident",
     "[IMAGE] My face when I see spellarm prices",
     "[MEME] Living in the Undercity starter pack"
-];
+].map(function(title) { return { title: title, link: "#" }; });
 
 var usernames = [
     "MemeLord_Supreme", "FreeDistrictResident", "CrystalImageMaker", "ShitpostKing",
@@ -115,7 +115,7 @@ function generateThreads() {
     var container = document.getElementById('thread-container');
     container.innerHTML = '';
     
-    var shuffled = threads.sort(function() { return 0.5 - Math.random(); });
+    var shuffled = threadData.sort(function() { return 0.5 - Math.random(); });
     
     for (var i = 0; i < 15; i++) {
         var score = scores[Math.floor(Math.random() * scores.length)];
@@ -132,7 +132,7 @@ function generateThreads() {
                 '<div class="downvote">▼</div>' +
             '</div>' +
             '<div class="thread-content">' +
-                '<h3><a href="#">' + shuffled[i] + '</a></h3>' +
+                '<h3><a href="' + shuffled[i].link + '">' + shuffled[i].title + '</a></h3>' +
                 '<p class="meta">posted by <strong>' + username + '</strong> in <a href="memes.html">/memes/</a> • ' + time + ' • ' + commentCount + ' comments</p>' +
             '</div>';
         
